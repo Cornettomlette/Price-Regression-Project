@@ -13,10 +13,12 @@ W5 - PROJECT
 While checking for outliers, we saw a potential problem with outliers limiting the predictive power of the model. We checked the distributions of continuous variables by using matplotlib and seaborn, and found that all variables were positively skewed, so we transformed the data. This improved the distributions dramatically. The next step was to dummify categorical columns and concatenate the data. We went on to divide the data between the dependant and independant variables, and to split between train and test sets. We initially tried a Linear Regression Model, a KNN model, and a Decision Tree Regressor.
 
 
-Model 2 - Ernesto
+**Model 2 - Ernesto**
+
 I got the best results with the linear regression and decided to stick with it (allowing my colleagues to work with the other models). I went back and did some feature engineering, creating a column to classify between houses with basement and houses without basement. I also dropped columns which I found irrelevant or highly correlated with other features. These two actions improved the model significantly.
 
-Model 3 - Macarena
+**Model 3 - Macarena**
+
 After doing feature engineering and classifying the houses, we were not able to increase further the performance of the model. I decided to run several models to predict the prices of the houses that were limiting the predictive power of our model. However, when conducting the predictions, our sample became smaller and smaller, the outliers were harder to predict and the overall model performance did not improve. I then attempted to classify the houses according to a location parameter, which if explored further could potentially lead to a better performance. 
 
 
