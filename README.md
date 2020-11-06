@@ -13,6 +13,15 @@ W5 - PROJECT
 While checking for outliers, we saw a potential problem with outliers limiting the predictive power of the model. We checked the distributions of continuous variables by using matplotlib and seaborn, and found that all variables were positively skewed, so we transformed the data. This improved the distributions dramatically. The next step was to dummify categorical columns and concatenate the data. We went on to divide the data between the dependant and independant variables, and to split between train and test sets. We initially tried a Linear Regression Model, a KNN model, and a Decision Tree Regressor.
 
 
+**Model 1 - Anna-Mariia**
+
+My first step was to try some models on the raw data, just to have a starting point. I chose the **Linear model, KNN model** (with the value of k from 2 to 10) and the **XGBooster decision tree regressor**. The whole time these three models were the ones on which I checked how the things I did with data affect the performance of the model.  As on raw data the performance of XGBooster was the best, I decided to stick with it and try to improve it’s performance. And as we know, the main problem to overcome were the outliers of the target carriable, which the models failed to predict correctly.
+The things I tried to do were:
+-         **Synthetic Minority Over-Sampling Technique for Regression with Gaussian Noise** (https://github.com/nickkunz/smogn) - it was meant to deal with outliers by oversampling them and undersampling the values, which formed the majority of data. After some trials with changed parameters, the method was unfortunately unable to improve the performance of a model. Maybe this method required more trials and trials
+-         Hyperparameters tuning of the XGBooster model to improve MAE – I found some parameters which helped minimize the MAE, and, respectively, the mean absolute percentage error, so the model was able to predict the actual values with more precision. But still this method never help with making the outliers more visible to the model and it didn’t improve the R2 score.
+-         Also tried to check the **MLP Regressor**, and the performance was horrible, because the objective error metrics of the model is the MSE,  which is very sensitive to outliers, which is our problem.
+So, my final actions with the model was dropping irrelevant cross-corelated columns, box-cox transformation for the continuous variables and log transformation of the target variable. I used the XGBoost model and applied some parameters to improve MAE. The final score was R2 = 0.88 and MAPE of 12.48.
+
 **Model 2 - Ernesto**
 
 I got the best results with the linear regression and decided to stick with it (allowing my colleagues to work with the other models). I went back and did some feature engineering, creating a column to classify between houses with basement and houses without basement. I also dropped columns which I found irrelevant or highly correlated with other features. These two actions improved the model significantly.
